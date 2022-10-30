@@ -17,7 +17,7 @@ const Router = () => {
         <Route path='/' element={<SignIn />} />
 
         {/* 회원가입 페이지 이동하기 */}
-        <Route path='signup' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp />} />
 
         {/* 인스타 리스트 생성 페이지로 이동하기 */}
         <Route path='/addpage' element={<AddPage />} />
