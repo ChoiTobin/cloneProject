@@ -6,47 +6,34 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
-
 const SignUp = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {account, idCheck, nameCheck} = useSelector((state) => state.account)
-
-
-
   const initialState = {
     username: "",
     nickname: "",
     password: "",
-    passwordCheck: "",    
+    passwordCheck: "",
   };
   const [join, setJoin] = useState(initialState);
   const onChangeHandler = (event) => {
     const {name, value} = event.target
     setJoin({...join, [name] : value})
   }
-
   const obj = {
-
     username: join.username,
     nickname: join.nickname,
     password: join.password,
     passwordCheck:join.passwordCheck,
-
-
-
-
   }
-
 // const useridCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
 // const usernicknameCheck = /^[a-z]+[a-z0-9]{5,19}$/g;
 // const passwordCheck = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
-
 // const onCheckId = () => {
 //   // 수정 필요(true, false로만 받으면 됨. if 필요 없음. dispatch로 받으면 됨)
 //   dispatch(__checkId(obj.userid))
 // }
-
 // useEffect(() => {
 //   // if(idCheck !== undefined){
 //   //   if(idCheck.success === true){
@@ -68,8 +55,6 @@ const SignUp = () => {
 //     }
 //   }
 // }, [dispatch, nameCheck])
-
-
   const onSubmitHandler = (event) => {
 //    event.preventDefault()
     // if(!useridCheck.test(obj.userid)){
@@ -90,24 +75,20 @@ const SignUp = () => {
     // if(obj.userid === "" || obj.userid === undefined) {
     //   return alert("빈칸을 입력해주세요.")
     // }
-
     // if(obj.nickname === "" || obj.nickname === undefined) {
     //   return alert("빈칸을 입력해주세요.")
     // }
-
     dispatch(__userSignUp(obj))
-
   }
   useEffect(() => {
     // if(account !== undefined){
     // if(account.success === true){
       //alert("회원가입이 완료되었습니다.")
       setJoin({
- 
         username: "",
         nickname: "",
         password: "",
-        passwordCheck: "",  
+        passwordCheck: "",
       })
        // window.location.replace("/")
     //}else{
@@ -117,21 +98,19 @@ const SignUp = () => {
     //  }
   }
   }, [account])
-
   return (
     <Bg>
-    <Stcontainer> 
+    <Stcontainer>
     <Box>{/* box */}
-
           <div>
             <h1>INSTAGRAM</h1>
             <div><Button2>facebook으로 로그인</Button2></div>
             <div>또는</div>
-              <Input type="text" name='username' onChange={onChangeHandler} placeholder="아이디는 영문자로 시작하는 영문자 또는 숫자 6~20자" /> 
+              <Input type="text" name='username' onChange={onChangeHandler} placeholder="아이디는 영문자로 시작하는 영문자 또는 숫자 6~20자" />
           {/* <button type="button" onClick={onCheckId}>중복확인</button> */}
           </div>
           <div>
-              <Input type="text" name='nickname' onChange={onChangeHandler} placeholder="닉네임은 영문자로 시작하는 영문자 또는 숫자 6~20자" /> 
+              <Input type="text" name='nickname' onChange={onChangeHandler} placeholder="닉네임은 영문자로 시작하는 영문자 또는 숫자 6~20자" />
           {/* <button type="button" onClick={onCheckname}>중복확인</button> */}
           </div>
           <div>
@@ -147,28 +126,22 @@ const SignUp = () => {
           {/* <div><Button3 type="submit" onClick={() => {navigate("/signup");}}>계정이 없으신가요? &nbsp;<Span>가입하기</Span></Button3></div> */}
       </Box>{/* box */}
     </Stcontainer>
-
     </Bg>
   )
 }
-
 export default SignUp
-
 const Bg =styled.div`
   position:relative;
   min-height: 100vh;
   min-width: 100vw;`
-
 const Stcontainer=styled.div`
   position: absolute;
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
   margin: 0 auto;
-
   height:400px;
 `
-
 const Box=styled.div`
   background-color:white;
   height:500px;
@@ -209,7 +182,6 @@ border-radius:4px;
 color:white;
 font-weight:600;
 padding:5px 0;
-
 `
 const Button4 = styled.button`
 margin-left:10px;
@@ -226,7 +198,6 @@ const Span = styled.span`
 font-weight:600;
 color:#458cb8;
 `
-
 const Button3 = styled.button`
 margin-top:0px;
 width:275px;
@@ -236,9 +207,7 @@ border-radius:4px;
 color:white;
 font-weight:600;
 padding:5px 0;
-
 `
-
 // const H2 = styled.h2`
 //   color:#e50913;
 // `
@@ -247,7 +216,6 @@ padding:5px 0;
 //   font-size:40px;
 //   margin:20px 0;
 // `
-
 // const Button = styled.button`
 //   margin-left:10px;
 //   width:100px;
@@ -276,16 +244,10 @@ padding:5px 0;
 //   font-weight:600;
 //   margin-left:20px;
 // `
-
-
 // import React from 'react'
-
 // const SignUp = () => {
- 
 //   return (
 //     <>회원가입</>
 //   )
 // }
-
 // export default SignUp;
-

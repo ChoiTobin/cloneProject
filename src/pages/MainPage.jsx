@@ -6,12 +6,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import {__listAllget} from"../redux/modules/AddPageSlice"
+import { __userLogout } from '../redux/modules/LoginSlice';
 //구조분해할당 =>
 import { Params } from 'react-router-dom'
 
 
 
 const MainPage = () => {
+  // 로그아웃
+  const dispatch = useDispatch()
+  const onLogoutHandler = () => {
+    dispatch(__userLogout())
+    alert("이용하시려면 다시 로그인 해주세요")
+    window.location.replace("/")
+  }
 
   const  contents  = useSelector((state) => state.mainlist.instaGet)
   const dispatch = useDispatch()
@@ -35,6 +43,8 @@ console.log("조던",contents)
   return (
 
     <Bg>
+      인스타 메인 리스트가 뿌려짐
+      <button onClick={onLogoutHandler}>Logout</button>
       <ListCenter> 
       {
       // 조건부 렌더링, length가 0 이상이여야만 렌더링(0개일땐 하지 마!)
@@ -73,6 +83,7 @@ console.log("조던",contents)
       }
       </ ListCenter>   
    </Bg>
+
   )
 }
 
