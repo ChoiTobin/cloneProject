@@ -19,6 +19,8 @@ import account from "../modules/LoginSlice";
 const store = configureStore({
 
   reducer: { mainlist: mainlist, comments: comments, account : account },
+  //createSlice에 name값 
+
 
   //dev tool을 개발 환경에서만 설정
   // devTools: process.env.REACT_APP_MOD !== "production",
