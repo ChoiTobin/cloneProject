@@ -30,7 +30,6 @@ const EditPage = () => {
     dispatch(
       __editinstas(editContent)
     )
-  }
    // navigator("/mainpage")
   }
 
@@ -176,5 +175,4 @@ const Himg4 = styled.img`
   height:23px;
 `
 const Edit = styled.div`
-
 `
