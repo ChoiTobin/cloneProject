@@ -1,15 +1,14 @@
 import React, { useState , useRef} from "react";
 import styled from 'styled-components'
-// import { useDispatch ,useSelector } from "react-redux";
 import { useDispatch  } from "react-redux";
 import { __addinstas} from "../redux/modules/AddPageSlice"
+import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
-
-const Addpage = ({ isOpen }) => {
-  const dispatch = useDispatch();
-
-  // const mainlistCo = useSelector((state) => state.mainlist)
+const Addpage = () => {
   
+  const dispatch = useDispatch();
+  const navigator = useNavigate();
   const [instasContent, setInstasContent] =useState ({
     content:"",
     id:0,
@@ -19,15 +18,11 @@ const Addpage = ({ isOpen }) => {
   const { name, value } = e.target;
   setInstasContent({...instasContent,[name]: value,});
   };
-    
-  
-  // Ref가 변경시 랜더링을 발생시키지말아야 할때 편리하다
-  // 이미지
   const [imageUrl, setImageUrl] = useState(null);
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
-  //썸네일바꾸는부분
+
   const onChangeImage = () => {
     const reader = new FileReader();
     const file = imgRef.current.files[0];
@@ -37,121 +32,115 @@ const Addpage = ({ isOpen }) => {
       setImgFile(file);
     };
   };
-  
+
   const onClickButton = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", imgFile);
     formData.append("content",instasContent.content);
+
     for (var pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
+      // console.log(pair[0] + ", " + pair[1]);
+      //  console.log("pair박람회",pair[1] )
+     
+      //content를 params로 보내기
+      //현재 part로file과 content를 보내고 있다.
     }
+    //formdata 읽는법
     dispatch(__addinstas(formData))
+    // ,
+    // {
+    //   params: { content:payload.params },
+    //   part:{ file: payload.formData }
+    // }    
+    // navigator("/mainpage")
+    //window.location.replace('/mainpage')
   };
 
   return (
-    
-    <BigContainer>
-      
-      <Container>
-        <Header>
-          <div>뒤로가기버튼</div>
-          <div>새 게시물 만들기</div>
-          <Button onClick={onClickButton}>공유하기</Button>
-        </Header>
-        <Container2>
-          <ImgBox>
-            <label htmlFor="imgFile" />
-            <Stimg src={imageUrl} />
-            <ImgInput type="file" id="imgFile" onChange={onChangeImage} accept="image/*" ref={imgRef} name="imgFile" multiple />
-          </ImgBox>
-          <Commentbox>
-            <div><Span></Span>닉네임</div>
-            <Textarea name="content" value={instasContent.content} onChange={onChangeHandler} placeholder="내용을 입력해주세요" > 네네 </Textarea>
-          </Commentbox>
-            
-        </Container2>
-      </Container>
-    </BigContainer>
+      <Container1>
+          <Header>
+              <Span1>취소</Span1>
+              <Span2>작성</Span2>
+            <Button2 onClick={onClickButton}>완료</Button2>
+          </Header>
+        <FlexContainer>
+            <div>
+              <label htmlFor="imgFile" />
+              <Img src={imageUrl} />
+              <input type="file" id="imgFile" onChange={onChangeImage} accept="image/*" ref={imgRef} name="imgFile" multiple />
+            </div>
+            <div>
+              <Flexminibox>
+                <Logo  src="./images/tobin.png" />
+                <Text>coetobin</Text>
+              </Flexminibox>
+              <div><Textarea name="content" value={instasContent.content} onChange={onChangeHandler} placeholder="내용을 입력해주세요" > </Textarea></div>
+            </div>
+        </FlexContainer>
+      </Container1>
   );
 }
 
 export default Addpage
 
-
-
+const Container1 = styled.div`
+width:700px;
+border:1px solid #ddd;
+border-radius:5px;
+border-radius:10px;
+`
+const Flexminibox = styled.div`
+display:flex;
+margin-top:10px;
+margin-left:10px;
+margin-bottom:10px;
+`
+const Logo = styled.img`
+width:25px;
+height:25px;
+`
+const Span1 = styled.span`
+  width:300px;
+  font-size:14px;
+  font-weight:600;
+  color:#454545;
+`
+const Span2 = styled.span`
+  width:300px;
+  font-weight:600;
+`
+const Text = styled.div`
+margin-top:2px;
+text-indent:7px;
+font-weight:800
+`
 const Textarea = styled.textarea`
-  display;block;
-  width:326px;
-  height:300px;
-  border:0px solid black;
-
+width:390px;
+height:270px;
+border:none;
 `
-const Commentbox =styled.div`
-  text-indent:10px;
-`
-const ImgInput = styled.input`
-   display:block;
-   
-`
-const Span =styled.span`
-  display:iblock;
-  width:30px;
-  height:30px;
-  background-color:#ddd;
-  border-radius:50px;
-`
-const Header = styled.div`
-  width:1000px;
-  height:50px;
-  border:1px solid #ddd;
-  line-height:50px;
-  display:flex;
-  justify-content:space-between;
-  font-size:13px;
-  padding:0 15px;
-`
-const Button = styled.button`
-  border:none;
-  background-color:#fff;
-  height:5px
-`
-const BigContainer = styled.div`
-  position:relative;
-  width:100%;
-  height:100%;
-`
-const ImgBox =styled.div`
-  
-`
-const Container = styled.div`
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%, 20%);
-
-`
-const Stimg = styled.img`
-  img {
-    height:400px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-    margin: 20px 0;
-    width:700px;
-    height:400px;
-    text-align:center;
-    background-color:#ddd;
-    line-height:300px;
-`
-
-const Input =styled.input`
-  display:block;
-  width:200px;
-  hegith:400px;
-  border: 1px solid #ddd;
-`
-const Container2 =styled.div`
+const FlexContainer = styled.div`
 display:flex;
 `
+const Header =styled.div`
+width:700px;
+height:50px;
+border-bottom:1px solid #ddd;
+line-height:50px;
+display:flex;
+justify-content:space-around;
+
+`
+const Img = styled.img`
+  width:300px;
+  height:300px;
+  border:1px solid #ddd;
+`
+const Button2 = styled.button`
+    width:50px;
+    border:none;
+    font-size:16px;
+    
+    background-color: transparent;
+  `
