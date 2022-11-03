@@ -22,6 +22,7 @@ const Addpage = () => {
   const [imgFile, setImgFile] = useState("");
   const imgRef = useRef();
 
+
   const onChangeImage = () => {
     const reader = new FileReader();
     const file = imgRef.current.files[0];
@@ -39,12 +40,6 @@ const Addpage = () => {
     formData.append("content",instasContent.content);
 
     for (var pair of formData.entries()) {
-
-    }
-
-    dispatch(__addinstas(formData))
-
-
       // console.log(pair[0] + ", " + pair[1]);
       //  console.log("pair박람회",pair[1] )
      
@@ -60,7 +55,6 @@ const Addpage = () => {
     // }    
     // navigator("/mainpage")
     //window.location.replace('/mainpage')
-
   };
 
   return (
@@ -121,33 +115,6 @@ margin-top:2px;
 text-indent:7px;
 font-weight:800
 `
-
-const Flexminibox = styled.div`
-display:flex;
-margin-top:10px;
-margin-left:10px;
-margin-bottom:10px;
-`
-const Logo = styled.img`
-width:25px;
-height:25px;
-`
-const Span1 = styled.span`
-  width:300px;
-  font-size:14px;
-  font-weight:600;
-  color:#454545;
-`
-const Span2 = styled.span`
-  width:300px;
-  font-weight:600;
-`
-const Text = styled.div`
-margin-top:2px;
-text-indent:7px;
-font-weight:800
-`
-
 const Textarea = styled.textarea`
 width:390px;
 height:270px;
@@ -175,4 +142,4 @@ const Button2 = styled.button`
     font-size:16px;
     
     background-color: transparent;
- `
+  `
