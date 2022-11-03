@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import ReactModal from 'react-modal';
 
 
+
 import store from "./redux/config/configStore";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
