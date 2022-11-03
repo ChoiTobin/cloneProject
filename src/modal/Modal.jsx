@@ -19,6 +19,8 @@ export default function Modal() {
 
   return (
     <>
+      {/* <Button onClick={toggleModal} className="btn-modal">
+      </Button> */}
       <Himg onClick={toggleModal}  src="./images/more.png"/>
 
       
@@ -30,7 +32,12 @@ export default function Modal() {
           </div>
           <div className="modal-content">
             
-            <AddPage/>       
+            <AddPage/>
+
+            {/* <button className="close-modal" onClick={toggleModal}>
+              CLOSE
+            </button> */}
+            
           </div>
         </div>
       )}

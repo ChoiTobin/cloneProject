@@ -30,6 +30,7 @@ const EditPage = () => {
     dispatch(
       __editinstas(editContent)
     )
+  }
    // navigator("/mainpage")
   }
 

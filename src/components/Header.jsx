@@ -18,7 +18,6 @@ const Header = () => {
 
   return (
     <>
-    
     <HeadContainer>
     <HeadLeft>
     <Logo  src="./images/instagram.png" />
@@ -32,16 +31,6 @@ const Header = () => {
         <Himg  onClick={onLogoutHandler} src="./images/logout (1).png" />
         <Himg  src="./images/tobin.png" />
       </HeadRight1>
-      
-      
-      
- {/* <button >Logout</button>
-            
-         */}
-        
-
-
-
     </HeadContainer>
     </>
   )
@@ -98,8 +87,6 @@ const Div = styled.div`
   font-weight: 400;
   line-height: 4;
 `
-
-
 const HeadRight1 = styled.a`
   font-size: 0.8rem;
   font-weight: 600;
