@@ -6,8 +6,6 @@ import AddPage from "../pages/AddPage";
 import MainPage from "../pages/MainPage";
 import EditPage from "../pages/EditPage";
 
-
-
 const Router = () => {
   return (
     <BrowserRouter>
@@ -23,7 +21,7 @@ const Router = () => {
         
         {/* 인스타 메인 리스트 이동하기 */}
         <Route path='/mainpage' element={<MainPage />} />
-
+        
         {/* 수정페이지 이동하기 */}
         <Route path='/editpage/:id' element={<EditPage />} />
       </Routes>

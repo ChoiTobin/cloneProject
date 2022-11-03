@@ -21,6 +21,7 @@ import Header from "../components/Header"
   }, [dispatch]);
 
 
+   // 좋아요 버튼
   const [likeImage, setLikeImage] = useState({
     id:0,
     isLike:false,
@@ -34,7 +35,12 @@ import Header from "../components/Header"
     setLikeImage(newLike)
   }
 
-
+  // 수정삭제 토클
+  // const [toggle, setToggle] = useState(false);
+  // const editToggleHandler = () =>{
+  //     toggle ? setToggle(false) : setToggle(true);
+  // }
+  
   const [editTg, setEidtTg] = useState({
     id:0,
     isEdit:false,
@@ -48,8 +54,6 @@ import Header from "../components/Header"
     setEidtTg(newEdit)
   }
   
-
-
   return (
     <>
     <Header/>

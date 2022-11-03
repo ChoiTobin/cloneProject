@@ -20,7 +20,7 @@ const EditPage = () => {
     );
   }, [dispatch]);
   
-
+  //수정
   const [editContent, setEditContent] = useState({
     content:"",
     id:Number(id),
@@ -30,15 +30,17 @@ const EditPage = () => {
     dispatch(
       __editinstas(editContent)
     )
-
+  }
+   // navigator("/mainpage")
   }
 
-
+  // 토글
   const [toggle, setToggle] = useState(false);
   const editToggleHandler = () =>{
     toggle ? setToggle(false) : setToggle(true);
   }
 
+  //이미지 토글
   const [imgtoggle, setImgToggle] = useState(false);
   
 

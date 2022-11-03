@@ -25,6 +25,8 @@ const Header = () => {
       <HeadRight1>
         <Himg  src="./images/free-icon-home-button-60817 (1).png" />
         <Himg  src="./images/send.png" />
+        {/* <Himg  src="./images/more.png"/> */}
+        {/* <Himg  src="./images/free-icon-explore-8345540.png" /> */}
         <Modal />
         <Himg  onClick={onLogoutHandler} src="./images/logout (1).png" />
         <Himg  src="./images/tobin.png" />
@@ -85,8 +87,6 @@ const Div = styled.div`
   font-weight: 400;
   line-height: 4;
 `
-
-
 const HeadRight1 = styled.a`
   font-size: 0.8rem;
   font-weight: 600;
