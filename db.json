@@ -1,25 +1,7 @@
 {
   "posts": [
     {
-      "content": "fdsfsdfds",
-      "id": 1667035069609
+      "id": 2
     }
-  ],
-  "poststobin": 
-  [
-    {
-  "postingId": 1,
-  "imageFile": "/images/basic.jpg",
-  "title": "제목",
-  "content": "내용",
-  "dayBefore": "7일 전"
-    },
-    {
-      "postingId": 2,
-      "imageFile": "/images/basic.jpg",
-      "title": "제목",
-      "content": "내용",
-      "dayBefore": "7일 전"
-      }
   ]
 }

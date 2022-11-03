@@ -14,29 +14,26 @@ const headers = {
 
 export const __userLogin = createAsyncThunk(
   "account/userLogin",
-  // login : reducer name, 경로 정해줘야
   async (payload, thunkAPI) => {
-    console.log("페이로드",payload)
     try {
-      const data = await axios.post(`https://www.dwon5001.kro.kr/auth/login`,payload);
-      //console.log("data",data)
+      const data = await axios.post(`https://wepungsan.kro.kr/auth/login`,payload)
+
+      let huyunjin = data.request.status
       const Access_Token = data.data.accessToken;
-      //console.log("access",data.data.accessToken)
       const refreshToken = data.data.refreshToken;
       // 정상적으로 로그인이 됐을때 토큰을 받아오겠다.
-      if (data.status === 200 || data.status === 201) {
+      if (huyunjin === 200 || huyunjin === 201) {
           setCookie("Access_Token", Access_Token);
-        // console.log("리프레시",data.data.refreshToken) //리프레시토큰
         setCookie("refreshToken", refreshToken);
-        setCookie("nickname", data.data.data);
-        // alert("로그인 성공");
-        // window.location.replace("/MainPage")
+        setCookie("nickname", data.data.nickname);
+        alert("로그인 성공");
+        window.location.replace("/MainPage")
       }
       return thunkAPI.fulfillWithValue(payload)
     } catch (error) {
       if (400 < error.data.status && error.data.status < 500) {
-        window.location.reload();
-        alert("로그인 실패")
+        //window.location.reload();
+        //alert("로그인 실패")
       }
       return thunkAPI.rejectWithValue(error);
     }
@@ -58,18 +55,24 @@ export const __userLogout = createAsyncThunk(
 )
 // 아무아이디나 입력했을때 로그인이 되는 문제는 앞단문제고 여기서 예외처리를 해줘야한다.
 //
-// export const  __checkId = createAsyncThunk(
-//   "account/checkId",
-//   // type
-//   async (payload, thunkAPI) => {
-//     try {
-//     const data = await axios.post(`${SERVICE_URL}/checkid`, {userid: payload})
-//       return thunkAPI.fulfillWithValue(data.data)
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error)
-//     }
-//   }
-// )
+export const  __idCheck = createAsyncThunk(
+  "account/idCheck",
+  // type
+  async (payload, thunkAPI) => {
+    try {
+    const data = await axios.post(`https://www.dwon5001.kro.kr/auth/idCheck`, {username:payload})
+    .then((response) => {
+
+    })
+
+      return thunkAPI.fulfillWithValue(data.data)
+    } catch (error) {
+
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+)
+
 // export const  __checkName = createAsyncThunk(
 //   "account/checkName",
 //   async (payload, thunkAPI) => {
@@ -109,7 +112,7 @@ export const __userLogout = createAsyncThunk(
 //   "account/checkName",
 //   async (payload, thunkAPI) => {
 //     try {
-//       const data = await axios.post(`${SERVICE_URL}/checkname`, {nickname: payload})
+//       const data = await axios.post(`https://www.dwon5001.kro.kr/auth/logout`, {nickname: payload})
 //       // 415는 타입에러. {}로 감싸서 보낸다.
 //       return thunkAPI.fulfillWithValue(data.data)
 //     } catch (error) {
@@ -125,13 +128,13 @@ export const __userSignUp = createAsyncThunk(
   "account/userSignUp",
   async (payload, thunkAPI) => {
       try {
-          const data = await axios.post("https://www.dwon5001.kro.kr/auth/signup",payload)
-          // .then((response) =>{
-          //   console.log(response)
-          // })
+        // console.log("뭐가잘못?",payload)
+          const data = await axios.post("https://wepungsan.kro.kr/auth/signup",payload)
+          window.location.replace("/")
           return thunkAPI.fulfillWithValue(data.data)
       } catch (error) {
-          return thunkAPI.rejectWithValue(error)
+        window.location.replace("/")
+        return thunkAPI.rejectWithValue(error)
       }
   }
 )
@@ -173,19 +176,19 @@ export const LoginSlice = createSlice({
       state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
     },
     // ------위는 현진 아래는 토빈
-    // [__checkId.pending]: (state) => {
-    //   state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
-    // },
-    // [__checkId.fulfilled]: (state, action) => {
-    //   state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
-    //   state.isSuccess = false;
-    //   state.idCheck=action.payload;
-    // },
-    // [__checkId.rejected]: (state, action) => {
-    //   state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
-    //   state.isSuccess = false;
-    //   state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
-    // },
+    [__idCheck.pending]: (state) => {
+      state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
+    },
+    [__idCheck.fulfilled]: (state, action) => {
+      state.isLoading = false; // 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.isSuccess = false;
+      state.idCheck=action.payload;
+    },
+    [__idCheck.rejected]: (state, action) => {
+      state.isLoading = false; // 에러가 발생했지만, 네트워크 요청이 끝났으니, false로 변경합니다.
+      state.isSuccess = false;
+      state.error = action.payload; // catch 된 error 객체를 state.error에 넣습니다.
+    },
     // [__checkName.pending]: (state) => {
     //   state.isLoading = true; // 네트워크 요청이 시작되면 로딩상태를 true로 변경합니다.
     // },

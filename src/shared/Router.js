@@ -5,7 +5,6 @@ import SignUp from "../components/SignUp";
 import AddPage from "../pages/AddPage";
 import MainPage from "../pages/MainPage";
 import EditPage from "../pages/EditPage";
-import Modal from "../modal/Modal";
 
 
 
@@ -26,10 +25,7 @@ const Router = () => {
         <Route path='/mainpage' element={<MainPage />} />
 
         {/* 수정페이지 이동하기 */}
-        <Route path='/editpage' element={<EditPage />} />
-
-        {/* 수정페이지 이동하기 */}
-        <Route path='/modal' element={<Modal />} />
+        <Route path='/editpage/:id' element={<EditPage />} />
       </Routes>
     </BrowserRouter>
   );
