@@ -51,9 +51,9 @@ HTML / CSS in JS / JavaScript / React / Redux / Redux Toolkit / git / gitHub / V
 
 ### 기능 3: CRUD 기능 구현
 
--게시글 업로드 삭제 수정 
+- 게시글 업로드 삭제 수정 
 
--댓글 업로드 삭제 수정 
+- 댓글 업로드 삭제 수정 
 
 
 Copyright 2022. hang-hae99 9th W6 team 2. all rights reserved.
