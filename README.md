@@ -45,8 +45,11 @@ HTML / CSS in JS / JavaScript / React / Redux / Redux Toolkit / git / gitHub / V
 - 유저 회원가입 시 조건에 맞는 유효성 검사
 
 
--정리중..-
+### 기능 2 :  URL 방식 사진 업로드
 
-## 라이센스
+- form 데이터를 활용하여 사진 업로드
+
+### 기능 3: CRUD 방식 게시글 업로드 삭제 수정 댓글 업로드 삭제 수정 
+
 
 Copyright 2022. hang-hae99 9th W6 team 2. all rights reserved.
